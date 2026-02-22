@@ -10,7 +10,7 @@ class Header extends Component {
     const name = this.props.data.name;
     const description = this.props.data.description;
     const avatar = "/images/pavlin.jpeg";
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 168;
     const avatarWidth = isMobile
       ? "70%"
       : "30%"; /* Adjust width for mobile and desktop */

@@ -36,7 +36,16 @@ class Resume extends Component {
             {work.title}
             <span>&bull;</span> <em className="date">{work.years}</em>
           </p>
-          <p>{work.description}</p>
+          {/* Support multi-line descriptions.
+              - If `work.description` is an array, render each item as its own <p>.
+              - If it's a string, split on "\n" and render each line as a paragraph. */}
+          <div>
+            {Array.isArray(work.description)
+              ? work.description.map((line, i) => <p key={i}>{line}</p>)
+              : String(work.description)
+                  .split('\n')
+                  .map((line, i) => <p key={i}>{line}</p>)}
+          </div>
         </div>
       );
     });
@@ -73,7 +82,7 @@ class Resume extends Component {
         </Slide>
 
         <Slide left duration={1300}>
-          <div className="row work">
+          <div id="work" className="row work">
             <div className="three columns header-col">
               <h1>
                 <span>Work</span>
@@ -85,7 +94,7 @@ class Resume extends Component {
         </Slide>
 
         <Slide left duration={1300}>
-          <div className="row skill">
+          <div id="skills" className="row skill">
             <div className="three columns header-col">
               <h1>
                 <span>Skills</span>
@@ -94,10 +103,53 @@ class Resume extends Component {
 
             <div className="nine columns main-col">
               <p>{skillmessage}</p>
-
+ 
               <div className="bars">
                 <ul className="skills">{skills}</ul>
               </div>
+              <div>
+
+  <h4>Languages & Frontend Technologies</h4>
+  <ul style={{ listStyleType: "disc", paddingLeft: "20px" }}>
+    <li>JS / HTML / CSS</li>
+    <li>ReactJS</li>
+    <li>AngularJS</li>
+    <li>Java</li>
+    <li>Python</li>
+  </ul>
+
+  <h4>DevOps & CI/CD</h4>
+  <ul style={{ listStyleType: "disc", paddingLeft: "20px" }}>
+    <li>Jenkins</li>
+    <li>GitHub Actions</li>
+    <li>GitHub / Git</li>
+    <li>Kubernetes</li>
+    <li>Docker</li>
+    <li>Grafana</li>
+    <li>Bash / Shell Scripting</li>
+    <li>Terraform</li>
+  </ul>
+
+  <h4>Security & Code Quality</h4>
+  <ul style={{ listStyleType: "disc", paddingLeft: "20px" }}>
+    <li>SonarQube</li>
+    <li>Snyk</li>
+    <li>EdgeScan</li>
+  </ul>
+
+  <h4>Monitoring & Operations</h4>
+  <ul style={{ listStyleType: "disc", paddingLeft: "20px" }}>
+    <li>Incident Management</li>
+    <li>Production Support / On-Call</li>
+    <li>Grafana</li>
+  </ul>
+
+  <h4>Tools & Other Technologies</h4>
+  <ul style={{ listStyleType: "disc", paddingLeft: "20px" }}>
+    <li>AI Tools</li>
+  </ul>
+
+</div>
             </div>
           </div>
         </Slide>
